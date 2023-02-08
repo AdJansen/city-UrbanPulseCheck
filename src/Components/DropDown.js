@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 
 //Written with some help from ChatGPT :) 
-const UrbanAreas = () => {
+const UrbanAreas = ({selectedUrbanArea, setSelectedUrbanArea}) => {
   const [urbanAreas, setUrbanAreas] = useState([]);
+
+  const handleChange = (event) => {
+    setSelectedUrbanArea(event.target.value);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,13 +25,17 @@ const UrbanAreas = () => {
   }, []);
 
   return (
-    <select>
+    <Select 
+      onChange={handleChange} 
+      value={selectedUrbanArea} 
+      label="City"
+    >
       {urbanAreas.map((urbanArea) => (
-        <option key={urbanArea.name} value={urbanArea.name}>
+        <MenuItem key={urbanArea.name} value={urbanArea.name}>
           {urbanArea.name}
-        </option>
+        </MenuItem>
       ))}
-    </select>
+    </Select>
   );
 };
 
