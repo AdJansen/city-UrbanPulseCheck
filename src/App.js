@@ -55,7 +55,7 @@ function App() {
                   <CardContent>
                     {urbanDetail.data.map((data) => (
                       <Typography key={data.label} variant="body2" color="text.secondary">
-                        {data.label}: {data.string_value}{data.float_value}{data.int_value}{data.currency_dollar_value}
+                        {data.label}: {data.string_value}{data.float_value}{data.int_value}{data.currency_dollar_value}{data.percent_value}
                       </Typography>
                     ))}
                   </CardContent>
