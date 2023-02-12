@@ -6,11 +6,11 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 
 //Written with some help from ChatGPT :) 
-const DropDown = ({selectedUrbanArea, setSelectedUrbanArea}) => {
+const DropDown = ({ selectedUrbanArea, setSelectedUrbanArea }) => {
   const [urbanAreas, setUrbanAreas] = useState([]);
 
   const handleChange = (event) => {
-    
+
     setSelectedUrbanArea(event.target.value);
   };
 
@@ -18,16 +18,18 @@ const DropDown = ({selectedUrbanArea, setSelectedUrbanArea}) => {
     const fetchData = async () => {
       const response = await fetch("https://api.teleport.org/api/urban_areas/");
       const data = await response.json();
-      setUrbanAreas(data._links["ua:item"]); 
+      setUrbanAreas(data._links["ua:item"]);
     };
     console.log("UseEffect Urban");
     fetchData();
   }, []);
 
   return (
-    <Select 
-      onChange={handleChange} 
-      value={selectedUrbanArea} 
+    <Select sx={{ width: 300 }}
+      labelId="city-select"
+      id="city-select"
+      onChange={handleChange}
+      value={selectedUrbanArea}
       label="City"
     >
       {urbanAreas.map((urbanArea) => (

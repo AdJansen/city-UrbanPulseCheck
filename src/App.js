@@ -4,6 +4,7 @@ import './App.css';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import Card from '@mui/material/Card';
 import { CardHeader, Typography, CardContent } from '@mui/material';
+import CityCard from './Components/CityCard';
 
 
 function App() {
@@ -27,8 +28,8 @@ function App() {
       const response = await fetch(`https://api.teleport.org/api/urban_areas/slug:${selectedUrbanArea.toLowerCase().replace(/[\s,]+/g, '-')}/scores/`);
       const data = await response.json();
       console.log("Score Data")
-      console.log(data.categories)
-      setUrbanScores(data.categories);
+      console.log(data)
+      setUrbanScores(data); // Note: urbanScores isn't structured like urbanDetails. To access the same structure, do urbanScores.categories
     };
     fetchDetailData();
     fetchScoreData();
@@ -43,23 +44,13 @@ function App() {
         setSelectedUrbanArea={setSelectedUrbanArea}
       />
       <div className='mainWindow'>
+        <div dangerouslySetInnerHTML={{__html:urbanScores.summary}} /* Displays the City Summary, might want to change*//> 
+
         <Grid2 container spacing={2} className="BrowseCards">
           {
             urbanDetails.map((urbanDetail) => (
-
               <Grid2 xs={12} sm={6} md={4} lg={3} key={urbanDetail.label}>
-                <Card variant="outlined">
-
-                  <CardHeader title={urbanDetail.label} />
-
-                  <CardContent>
-                    {urbanDetail.data.map((data) => (
-                      <Typography key={data.label} variant="body2" color="text.secondary">
-                        {data.label}: {data.string_value}{data.float_value}{data.int_value}{data.currency_dollar_value}{data.percent_value}
-                      </Typography>
-                    ))}
-                  </CardContent>
-                </Card>
+                <CityCard urbanDetail={urbanDetail} />
               </Grid2>
             ))
           }
