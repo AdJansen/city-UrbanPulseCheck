@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import CityCard from './Components/CityCard';
+import AirQualityBar from './Components/AirQualityBar';
 
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
         setSelectedUrbanArea={setSelectedUrbanArea}
       />
       <div className='mainWindow'>
+
+        <AirQualityBar selectedUrbanArea={selectedUrbanArea} />
+
         <div dangerouslySetInnerHTML={{ __html: urbanScores.summary }} /* Displays the City Summary, might want to change*/ />
 
         <Grid2 container spacing={2} className="BrowseCards">
