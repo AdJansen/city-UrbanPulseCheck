@@ -53,7 +53,7 @@ function App() {
           {
             urbanDetails && urbanScores ? //This ternary operator is used to check if the data has been loaded before trying to render it
               urbanDetails.map((urbanDetail) => ( //This is the map function that iterates through the data and renders the cards, each card is passed on category of city data, and the corresponding score
-                <Grid2 xs={12} sm={6} md={4} lg={3}> 
+                <Grid2 xs={12} sm={6} md={4}> 
                   <CityCard 
                     urbanDetail={urbanDetail} 
                     urbanScore={urbanScores.categories ? urbanScores.categories[scoreNameIndex[urbanDetail.label]] : undefined} 
