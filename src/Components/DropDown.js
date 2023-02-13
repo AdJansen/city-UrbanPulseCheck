@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
+import { FormControl } from "@mui/material";
 
 
 //Written with some help from ChatGPT :) 
@@ -23,19 +25,22 @@ const DropDown = ({ selectedUrbanArea, setSelectedUrbanArea }) => {
   }, []);
 
   return (
-    <Select style={{ width: "40%" }}
-      labelId="city-select"
-      id="city-select"
-      onChange={handleChange}
-      value={selectedUrbanArea}
-      label="City"
-    >
-      {urbanAreas.map((urbanArea) => (
-        <MenuItem key={urbanArea.name} value={urbanArea.name}>
-          {urbanArea.name}
-        </MenuItem>
-      ))}
-    </Select>
+    <FormControl style={{ width: "40%" }}>
+      <InputLabel id="select-label" style={{color: "black"}}>City</InputLabel>
+      <Select 
+        labelId="city-select"
+        id="city-select"
+        onChange={handleChange}
+        value={selectedUrbanArea}
+        style={{backgroundColor: "#f5f5f5"}}
+      >
+        {urbanAreas.map((urbanArea) => (
+          <MenuItem key={urbanArea.name} value={urbanArea.name}>
+            {urbanArea.name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 };
 
