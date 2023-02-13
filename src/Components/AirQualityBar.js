@@ -16,10 +16,13 @@ const AirQualityBar = ({selectedUrbanArea}) => {
         fetchData();
     }, [selectedUrbanArea]);
 
+    const wuhwuh = "N/A";
 
     return (
         <div className="air-quality-bar">
             <h1>{selectedUrbanArea}</h1>
+            
+            <h2>Air Quality Index: {airData.data.aqi ? airData.data.aqi : wuhwuh}</h2>
 
             
 
