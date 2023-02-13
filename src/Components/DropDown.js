@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 
 
 //Written with some help from ChatGPT :) 
@@ -25,7 +23,7 @@ const DropDown = ({ selectedUrbanArea, setSelectedUrbanArea }) => {
   }, []);
 
   return (
-    <Select sx={{ width: 300 }}
+    <Select style={{ width: "40%" }}
       labelId="city-select"
       id="city-select"
       onChange={handleChange}

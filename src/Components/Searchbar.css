@@ -1,35 +1,43 @@
-.navbar {/* Navbar css taken from Prakash Karena on https://stackoverflow.com/questions/58096450/how-to-have-a-sticky-navbar-in-reactjs*/
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.7rem 2rem;
-    overflow: hidden;
-    z-index: 1;
-    width: 100%; 
-    margin: auto;
-    top: 0;
-    border-bottom: solid 1px var(--primary-color);
-    opacity: 1;
-    background-color: bisque;
-    position: fixed;
-    top: 0;
+.navbar {
+  /* Navbar css taken from Prakash Karena on https://stackoverflow.com/questions/58096450/how-to-have-a-sticky-navbar-in-reactjs*/
+  position: fixed;
+  display: flex;  
+  justify-content: left;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+  margin: auto;
+  top: 0;
+  border-bottom: solid 1px var(--primary-color);
+  opacity: 1;
+  background-color: #03989e;
+  position: fixed;
+  top: 0;
 
-    /* box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25); */
-    box-shadow: 12px 0 15px -4px rgba(31, 73, 125, 0.8),
-      -12px 0 8px -4px rgba(31, 73, 125, 0.8);
-    
-  }
-  
-  .searchField {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    height: 100%;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    border: solid 1px var(--primary-color);
-    background-color: white;
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
-  }
+  /* box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25); */
+  box-shadow: 12px 0 15px -4px rgba(31, 73, 125, 0.8),
+    -12px 0 8px -4px rgba(31, 73, 125, 0.8);
+
+}
+
+.searchField {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: solid 1px var(--primary-color);
+  background-color: white;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+  justify-content: left;
+  align-items: left;
+  width: 100px;
+  margin: 5px;
+  padding-right: 20%;
+}
