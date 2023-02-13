@@ -15,12 +15,25 @@ const ExpandMore = styled((props) => { //ExapandMore was taken from MUI
     return <IconButton {...other} />;
 })(({ theme, expand }) => ({
     transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
+    margin: 'auto',
     transition: theme.transitions.create('transform', {
         duration: theme.transitions.duration.shortest,
     }),
 }));
 
+const cardStyle = {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "#f5f5f5",
+    borderRadius: "10px",
+    boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.2)",
+    transition: "all 0.3s ease-in-out",
+    
+}
 //Card component taken from material-ui with some modifications to work with our data
 //CityCard will probably need to intake data from the API, and then display it in the card
 const CityCard = ({ urbanDetail, urbanScore }) => {
@@ -29,19 +42,20 @@ const CityCard = ({ urbanDetail, urbanScore }) => {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-    console.log(urbanScore ? urbanScore.score_out_of_10 : null)
+    
     return (
 
-        <Card >
+        <Card style={{backgroundColor : "f5f5f5", alignItems : 'center'}}>
 
             <CardHeader
                 title={urbanDetail.label}
-                subheader= {urbanScore ? "Teleport Score Out of 10: "+urbanScore.score_out_of_10 : null}
+                subheaderTypographyProps={urbanScore ? { color: urbanScore.score_out_of_10 > 6 ? "Green" : urbanScore.score_out_of_10 < 4 ? "Red" : "text.secondary" } : { color: "text.secondary" }}
+                subheader= {urbanScore ? urbanScore.score_out_of_10 > 0 ? `Teleport Score Out of 10: ${urbanScore.score_out_of_10.toFixed(2)}` : "Teleport Score Out of 10: N/A" : "Teleport Score Out of 10: N/A"}
             />
 
 
-            <CardActions disableSpacing>
-                <ExpandMore
+            <CardActions>
+                <ExpandMore //ExpandMore is a component from MUI
                     expand={expanded}
                     onClick={handleExpandClick}
                     aria-expanded={expanded}

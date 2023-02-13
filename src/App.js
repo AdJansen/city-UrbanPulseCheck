@@ -31,8 +31,8 @@ function App() {
       console.log(data)
       setUrbanScores(data); // Note: urbanScores isn't structured like urbanDetails. To access the same structure, do urbanScores.categories
     };
-    fetchDetailData();
-    fetchScoreData();
+    selectedUrbanArea ? fetchDetailData() : setUrbanDetails([]);
+    selectedUrbanArea ? fetchScoreData() : setUrbanScores([]);
   }, [selectedUrbanArea]);
 
 
@@ -49,7 +49,7 @@ function App() {
 
         <div dangerouslySetInnerHTML={{ __html: urbanScores.summary }} /* Displays the City Summary, might want to change*/ />
 
-        <Grid2 container spacing={2} className="BrowseCards">
+        <Grid2 container spacing={1} className="BrowseCards">
           {
             urbanDetails && urbanScores ? //This ternary operator is used to check if the data has been loaded before trying to render it
               urbanDetails.map((urbanDetail) => ( //This is the map function that iterates through the data and renders the cards, each card is passed on category of city data, and the corresponding score
@@ -57,6 +57,7 @@ function App() {
                   <CityCard 
                     urbanDetail={urbanDetail} 
                     urbanScore={urbanScores.categories ? urbanScores.categories[scoreNameIndex[urbanDetail.label]] : undefined} 
+                    key={urbanDetail.label}
                     
                   />
                 </Grid2>
