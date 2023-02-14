@@ -39,11 +39,11 @@ function App() {
 
   // urbanScore details are broken. Need to be able to access the data in the array
   return (
-    <div className="App">
+    <div className="App" data-testid="app-component">
       <Searchbar
         selectedUrbanArea={selectedUrbanArea}
         setSelectedUrbanArea={setSelectedUrbanArea}
-        data-testid="searchbar-component"
+        TestId="searchbar-component"
       />
       <div className='mainWindow'>
 

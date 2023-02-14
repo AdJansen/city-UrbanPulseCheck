@@ -4,9 +4,9 @@ import DropDown from './DropDown';
 import CityPulse from './CityPulse.png';
 
 //We will take the first city to appear from the search
-const Searchbar = ({selectedUrbanArea, setSelectedUrbanArea}) => {
+const Searchbar = ({selectedUrbanArea, setSelectedUrbanArea, testid}) => {
   return (
-    <nav className="navbar">
+    <nav className="navbar" data-testid='searchbar-component'>
       <img src={CityPulse} alt="CityPulse" className="logo"/>
       <DropDown 
         selectedUrbanArea={selectedUrbanArea} 

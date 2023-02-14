@@ -23,7 +23,7 @@ const ExpandMore = styled((props) => { //ExapandMore was taken from MUI
 
 //Card component taken from material-ui with some modifications to work with our data
 //CityCard will probably need to intake data from the API, and then display it in the card
-const CityCard = ({ urbanDetail, urbanScore }) => {
+const CityCard = ({ urbanDetail, urbanScore, testid}) => {
     const [expanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
@@ -32,7 +32,7 @@ const CityCard = ({ urbanDetail, urbanScore }) => {
 
     return (
 
-        <Card style={{ backgroundColor: "f5f5f5", alignItems: 'center' }}>
+        <Card style={{ backgroundColor: "f5f5f5", alignItems: 'center' }} data-testid="citycard-component">
 
             <CardHeader
                 title={urbanDetail.label}

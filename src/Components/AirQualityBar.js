@@ -7,7 +7,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid } from '@mui/material';
 import Icon from '@mui/material/Icon';
-import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import { minHeight } from '@mui/system';
 import Paper from '@mui/material/Paper';
 
@@ -80,7 +79,7 @@ const AirQualityBar = ({ selectedUrbanArea }) => {
 
     let aqi = (airData.data && airData.status != "error") ? airData.data.aqi : wuhwuh
     return (
-        <div className="air-quality-bar">
+        <div className="air-quality-bar" data-testid="airqualitybar-component">
 
             <Grid className="air-bar" container sx={{ backgroundColor: 'white', alignItems: 'center', fontSize: '1.5rem', borderRadius: 3 }} rowSpacing={3} columnSpacing={10} >
                 <Grid item sm={12} md={4} className="city-name" sx={{ color: 'black' }}>
