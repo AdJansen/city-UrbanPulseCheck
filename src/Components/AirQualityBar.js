@@ -87,13 +87,11 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
         return (
             <div className="air-quality-bar">
 
-
                 <Grid className="air-bar" container sx={{ backgroundColor: 'white', alignItems: 'center', fontSize: '1.5rem', borderRadius: 3, display: "inline-flex", justifyContent: 'center' }} rowSpacing={0} columnSpacing={8} >
                     <Grid item sm={12} md={4} className="city-name" sx={{ color: 'black', padding: 0 }}>
                         <h1> {selectedUrbanArea}</h1>
-                        <h2>{Math.ceil(urbanScore.teleport_city_score)} / 100 </h2>
+                        <h2> Total City Score: {Math.ceil(urbanScore.teleport_city_score)} / 100</h2>
                     </Grid>
-
 
                     <Grid item sm={12} md={4} sx={{ paddingTop: 0 }}>
                         <Card className="air-quality-card" sx={{}}>
