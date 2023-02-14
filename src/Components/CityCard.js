@@ -53,7 +53,7 @@ const CityCard = ({ urbanDetail, urbanScore, testid}) => {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <b>{urbanDetail.label === "Cost of Living" ? "Price in USD$": null} </b>
+                    <b>{urbanDetail.label === "Cost of Living" || urbanDetail.label == "Housing" ? "Price in USD$": null} </b>
                     {urbanDetail.data.map((data) => (
                         (data.label.includes("Teleport score")) ? //Includes is used to display teleport score out of 10
                             (<div style={{ display: "flex", justifyContent: "space-between" }}> 
