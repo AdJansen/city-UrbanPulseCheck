@@ -82,91 +82,89 @@ const AirQualityBar = ({ selectedUrbanArea }) => {
     return (
         <div className="air-quality-bar">
 
-            <Grid2 className="air-bar" container sx={{ backgroundColor: 'white', alignItems: 'center', fontSize: '1.5rem', borderRadius: 3 }} rowSpacing={3} columnSpacing={10} >
-                <Grid2 sm={12} md={4} className="city-name" sm sx={{ color: 'black' }}>
+            <Grid className="air-bar" container sx={{ backgroundColor: 'white', alignItems: 'center', fontSize: '1.5rem', borderRadius: 3 }} rowSpacing={3} columnSpacing={10} >
+                <Grid item sm={12} md={4} className="city-name" sx={{ color: 'black' }}>
                     <h1>{selectedUrbanArea}</h1>
-                </Grid2>
+                </Grid>
 
-                <Grid2 sm={12} md={4} sx={{ paddingTop: 0 }}>
+                <Grid item sm={12} md={4} sx={{ paddingTop: 0 }}>
                     <Card className="air-quality-card" sx={{ minWidth: 50 }} color="green">
 
                         <CardActionArea href={AQInfo}>
                             <CardContent>
-                                <Grid2 container sx={{ justifyContent: "center" }}>
+                                <Grid container sx={{ justifyContent: "center" }}>
 
-                                    <Grid2 container sx={{ alignItems: 'center', padding: 0 }}>
-                                        <Grid2 sx={{ paddingRight: 0 }}>
+                                    <Grid container sx={{ alignItems: 'center', padding: 0 }}>
+                                        <Grid item sx={{ paddingRight: 0 }}>
                                             <Typography sx={{ fontSize: "1.3rem", margin: 0, }} gutterBottom>
                                                 Air Quality
                                             </Typography>
                                             <Typography sx={{ fontSize: '1.5rem' }} color={airColor(aqi)[0]} component="div">
                                                 {aqi}
                                             </Typography>
-                                        </Grid2>
-                                        <Grid2>
+                                        </Grid>
+                                        <Grid item>
                                             <Typography sx={{ fontSize: '1.3rem' }}>
                                                 {airColor(aqi)[1]}
                                             </Typography>
-                                        </Grid2>
+                                        </Grid>
 
 
-                                    </Grid2>
+                                    </Grid>
 
-                                </Grid2>
+                                </Grid>
 
                             </CardContent>
                         </CardActionArea>
                     </Card>
-                </Grid2>
+                </Grid>
 
 
-                <Grid2 sm={12} md={4} className="weather-grid" >
+                <Grid item sm={12} md={4} className="weather-grid" >
                     <Card className="weather-card" sx={{ minWidth: 250 }}>
                         <CardActionArea href={weatherInfo}>
                             <CardContent>
-                                <Grid2 className="test" container sx={{ alignItems: 'center', justifyContent: "center" }}>
+                                <Grid item className="test" container sx={{ alignItems: 'center', justifyContent: "center" }}>
 
-                                    <Grid2 container sx={{ alignItems: 'center', justifyContent: "center", padding: 0 }}>
-                                        <Grid2 sx={{ justifyContent: "center" }}>
+                                    <Grid container sx={{ alignItems: 'center', justifyContent: "center", padding: 0 }}>
+                                        <Grid item sx={{ justifyContent: "center" }}>
                                             <Typography sx={{ fontSize: "1.2rem", margin: 0, }} gutterBottom>
                                                 Weather
                                             </Typography>
-                                        </Grid2>
-                                        <Grid2 sx={{ justifyContent: "center" }}>
+                                        </Grid>
+                                        <Grid item sx={{ justifyContent: "center" }}>
                                             <Typography sx={{ fontSize: "1.2rem" }} component="div">
                                                 {(weatherData.current && weatherData.error == null) ? weatherData.current.temp_c : wuhwuh}
                                                 °C
                                             </Typography>
 
-                                        </Grid2>
+                                        </Grid>
 
-                                    </Grid2>
+                                    </Grid>
 
-                                    <Grid2 container sx={{ alignItems: 'center', justifyContent: "center", padding: 0 }}>
-                                        <Grid2 sx={{ justifyContent: "center" }}>
+                                    <Grid container sx={{ alignItems: 'center', justifyContent: "center", padding: 0 }}>
+                                        <Grid item sx={{ justifyContent: "center" }}>
                                             <Icon sx={{ fontSize: 64 }}>
                                                 <img src={(weatherData.current && weatherData.error == null) ? weatherData.current.condition.icon : null} />
                                             </Icon>
-                                        </Grid2>
+                                        </Grid>
 
-                                        <Grid2 sx={{ justifyContent: "center" }}>
+                                        <Grid item sx={{ justifyContent: "center" }}>
                                             <Typography sx={{ fontSize: "1.2rem" }}>
                                                 {(weatherData.current && weatherData.error == null) ? weatherData.current.condition.text : wuhwuh}
                                             </Typography>
 
-                                        </Grid2>
-                                    </Grid2>
-                                </Grid2>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
 
 
 
                             </CardContent>
                         </CardActionArea>
                     </Card>
-                </Grid2>
-
-
-            </Grid2>
+                </Grid>
+            </Grid>
 
             {/* <Paper elevation={3} >
 
