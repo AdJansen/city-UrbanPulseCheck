@@ -75,7 +75,7 @@ const AirQualityBar = ({ selectedUrbanArea }) => {
 
     let aqi = (airData.data && airData.status != "error") ? airData.data.aqi : wuhwuh
     return (
-        <div className="air-quality-bar">
+        <div className="air-quality-bar" data-testid="airqualitybar-component">
 
             <Grid className="air-bar" container sx={{ backgroundColor: 'white', alignItems: 'center', fontSize: '1.5rem', borderRadius: 3 }} rowSpacing={3} columnSpacing={10} >
                 <Grid item sm={12} md={4} className="city-name" sx={{ color: 'black' }}>
