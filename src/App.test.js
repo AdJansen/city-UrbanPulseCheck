@@ -5,16 +5,17 @@ import '@testing-library/jest-dom'
 
 
 
-test('Searchbar component is being rendered', () => {
-  const { getByTestId } = render(<App />);
-  expect(getByTestId('searchbar-component')).toBeInTheDocument();
-});
+
 
 test('App component is being rendered without crashing', () => {
   const { getByTestId } = render(<App />);
   expect(getByTestId('app-component')).toBeInTheDocument();
 });
 
+test('Searchbar component is being rendered', () => {
+  const { getByTestId } = render(<App />);
+  expect(getByTestId('searchbar-component')).toBeInTheDocument();
+});
 
 test('CityCard component is being rendered and passed the correct props', async () => {
   const { findByTestId } = render(<App />);
