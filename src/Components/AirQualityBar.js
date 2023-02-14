@@ -10,7 +10,7 @@ import Icon from '@mui/material/Icon';
 import { minHeight } from '@mui/system';
 import Paper from '@mui/material/Paper';
 
-const AirQualityBar = ({ selectedUrbanArea, urbanScore}) => {
+const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
     const [airData, setAirData] = useState([]);
     const [weatherData, setWeatherData] = useState([]);
     const [AQInfo, setAQInfo] = useState([]);
@@ -72,26 +72,37 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore}) => {
             return ["black", null]; //black
         }
     }
+    function scoreColor(score) {
+        if (score < 50) {
+            return "#FF0000"
+        } else if (score < 100) {
+            return "#00FF00"
+        }
+    }
+
+
 
     let aqi = (airData.data && airData.status != "error") ? airData.data.aqi : wuhwuh
     if (city) {
         return (
             <div className="air-quality-bar">
-                
-                
+
+
                 <Grid className="air-bar" container sx={{ backgroundColor: 'white', alignItems: 'center', fontSize: '1.5rem', borderRadius: 3, display: "inline-flex", justifyContent: 'center' }} rowSpacing={0} columnSpacing={8} >
                     <Grid item sm={12} md={4} className="city-name" sx={{ color: 'black', padding: 0 }}>
                         <h1> {selectedUrbanArea}</h1>
+                        <h2>{Math.ceil(urbanScore.teleport_city_score)} / 100 </h2>
                     </Grid>
 
+
                     <Grid item sm={12} md={4} sx={{ paddingTop: 0 }}>
-                        <Card className="air-quality-card" sx={{ }}>
+                        <Card className="air-quality-card" sx={{}}>
 
                             <CardActionArea href={AQInfo}>
                                 <CardContent>
                                     <Grid container sx={{ justifyContent: "center" }}>
-                                        <Grid container sx={{ alignItems: 'center', justifyContent: "center",padding: 0 }}>
-                                            <Grid item sx={{ paddingRight: 3, justifyContent: "center"}}>
+                                        <Grid container sx={{ alignItems: 'center', justifyContent: "center", padding: 0 }}>
+                                            <Grid item sx={{ paddingRight: 3, justifyContent: "center" }}>
                                                 <Typography sx={{ fontSize: "1.3rem" }} gutterBottom>
                                                     Air Quality
                                                 </Typography>
@@ -117,7 +128,7 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore}) => {
 
 
                     <Grid item sm={12} md={4} className="weather-grid" >
-                        <Card className="weather-card" sx={{ }}>
+                        <Card className="weather-card" sx={{}}>
                             <CardActionArea href={weatherInfo}>
                                 <CardContent>
                                     <Grid item className="inner-weather-grid" container sx={{ alignItems: 'center', justifyContent: "center" }}>
