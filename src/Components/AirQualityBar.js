@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid } from '@mui/material';
 import Icon from '@mui/material/Icon';
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import { minHeight } from '@mui/system';
 import Paper from '@mui/material/Paper';
 
@@ -74,13 +75,14 @@ const AirQualityBar = ({ selectedUrbanArea }) => {
     }
 
     let aqi = (airData.data && airData.status != "error") ? airData.data.aqi : wuhwuh
-    return (
-        <div className="air-quality-bar" data-testid="airqualitybar-component">
-
-            <Grid className="air-bar" container sx={{ backgroundColor: 'white', alignItems: 'center', fontSize: '1.5rem', borderRadius: 3 }} rowSpacing={3} columnSpacing={10} >
-                <Grid item sm={12} md={4} className="city-name" sx={{ color: 'black' }}>
-                    <h1>{selectedUrbanArea}</h1>
-                </Grid>
+    if (city) {
+        return (
+            <div className="air-quality-bar">
+                
+                <Grid className="air-bar" container sx={{ backgroundColor: 'white', alignItems: 'center', fontSize: '1.5rem', borderRadius: 3, display: "inline-flex", justifyContent: 'center' }} rowSpacing={0} columnSpacing={8} >
+                    <Grid item sm={12} md={4} className="city-name" sx={{ color: 'black', padding: 0 }}>
+                        <h1> {selectedUrbanArea}</h1>
+                    </Grid>
 
                     <Grid item sm={12} md={4} sx={{ paddingTop: 0 }}>
                         <Card className="air-quality-card" sx={{ }}>
@@ -159,62 +161,6 @@ const AirQualityBar = ({ selectedUrbanArea }) => {
                         </Card>
                     </Grid>
                 </Grid>
-
-                {/* <Paper elevation={3} >
-
-                    
-                    <Grid2 container spacing={2} rowSpacing={3} columnSpacing={10}>
-                        <Grid2 sm>
-                            <h1>{selectedUrbanArea}</h1>
-                        </Grid2>
-
-                        <Grid2 sm>
-                            <Card className="air-quality-card" sx={{ minWidth: 250, minHeight: 350}} color="green">
-
-                                <CardActionArea href={AQInfo}>
-                                    <CardContent>
-                                        <Typography sx={{ fontSize: 35 }} gutterBottom>
-                                            Air Quality
-                                        </Typography>
-                                        <Typography variant="h1" color={airColor(aqi)[0]} component="div">
-                                            {aqi}
-                                        </Typography>
-                                        <Typography variant='h4'>
-                                            {airColor(aqi)[1]}
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Grid2>
-
-                        <Grid2 sm>
-                            <Card className="weather-card" sx={{ minWidth: 250, minHeight: 350}}>
-                                <CardActionArea href={weatherInfo}>
-                                    <CardContent>
-                                        <Icon sx={{ fontSize: 64 }}>
-                                            <img src={(weatherData.current && weatherData.error == null) ? weatherData.current.condition.icon : null} />
-                                        </Icon>
-                                        <Typography sx={{ fontSize: 35 }} color="text.primary" gutterBottom>
-                                            Weather
-                                        </Typography>
-                                        <Typography variant="h1" component="div">
-                                            {(weatherData.current && weatherData.error == null) ? weatherData.current.temp_c : wuhwuh}
-                                            °C
-                                        </Typography>
-                                        <Typography variant='h4'>
-                                            {(weatherData.current && weatherData.error == null) ? weatherData.current.condition.text : wuhwuh}
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        </Grid2>
-
-
-                    </Grid2>
-                </Paper> */}
-
-                {/* <h2>Air Quality Index: {(airData.data && airData.status != "error" )? airData.data.aqi : wuhwuh}</h2> */}
-
             </div>
         );
     } else {
