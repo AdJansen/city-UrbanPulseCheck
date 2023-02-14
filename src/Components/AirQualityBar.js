@@ -26,13 +26,13 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
             //console.log(data)    
             setAirData(data);
 
-            const response2 = await fetch(`http://api.weatherapi.com/v1/current.json?key=02636dea6dac4e80bf3152610231302&q=${city}&aqi=no`);
+            const response2 = await fetch(`https://api.weatherapi.com/v1/current.json?key=02636dea6dac4e80bf3152610231302&q=${city}&aqi=no`);
             const data2 = await response2.json();
             setWeatherData(data2);
             //console.log("data2")
             //console.log(data2);
 
-            const response3 = await fetch(`http://api.weatherapi.com/v1/search.json?key=02636dea6dac4e80bf3152610231302&q=${city}`);
+            const response3 = await fetch(`https://api.weatherapi.com/v1/search.json?key=02636dea6dac4e80bf3152610231302&q=${city}`);
             const data3 = await response3.json();
             //console.log("data3")
             //console.log(data3)
