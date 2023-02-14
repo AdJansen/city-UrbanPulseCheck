@@ -173,7 +173,7 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
             </div>
         );
     } else {
-        return <h1>Choose a city to see the air quality and weather</h1>;
+        return <h1>Choose a city to learn more about it</h1>;
 
     }
 };
