@@ -7,7 +7,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid } from '@mui/material';
 import Icon from '@mui/material/Icon';
-import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import { minHeight } from '@mui/system';
 import Paper from '@mui/material/Paper';
 
