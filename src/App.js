@@ -47,7 +47,7 @@ function App() {
       />
       <div className='mainWindow'>
 
-        <AirQualityBar selectedUrbanArea={selectedUrbanArea} />
+        <AirQualityBar selectedUrbanArea={selectedUrbanArea} urbanScore={urbanScores}/>
 
         <div dangerouslySetInnerHTML={{ __html: urbanScores.summary }} /* Displays the City Summary, might want to change*/ />
 
