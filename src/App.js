@@ -1,9 +1,10 @@
-import Searchbar from './Components/Searchbar';
+import Grid from '@mui/material/Grid';
+//import Grid2 from '@mui/material/Unstable_Grid2/Grid2'; //Grid2 is for some reason breaking the tests
 import { useState, useEffect } from 'react';
-import './App.css';
-import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import CityCard from './Components/CityCard';
 import AirQualityBar from './Components/AirQualityBar';
+import Searchbar from './Components/Searchbar';
+import './App.css';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
       <Searchbar
         selectedUrbanArea={selectedUrbanArea}
         setSelectedUrbanArea={setSelectedUrbanArea}
+        data-testid="searchbar-component"
       />
       <div className='mainWindow'>
 
@@ -49,22 +51,22 @@ function App() {
 
         <div dangerouslySetInnerHTML={{ __html: urbanScores.summary }} /* Displays the City Summary, might want to change*/ />
 
-        <Grid2 container spacing={1} className="BrowseCards">
+        <Grid container spacing={1} className="BrowseCards">
           {
             urbanDetails && urbanScores ? //This ternary operator is used to check if the data has been loaded before trying to render it
               urbanDetails.map((urbanDetail) => ( //This is the map function that iterates through the data and renders the cards, each card is passed on category of city data, and the corresponding score
-                <Grid2 xs={12} sm={6} md={4}> 
+                <Grid item xs={12} sm={12} md={6} lg={4}> 
                   <CityCard 
                     urbanDetail={urbanDetail} 
                     urbanScore={urbanScores.categories ? urbanScores.categories[scoreNameIndex[urbanDetail.label]] : undefined} 
                     key={urbanDetail.label}
-                    
+                    data-testid="citycard-component"
                   />
-                </Grid2>
+                </Grid>
               ))
               : null
           }
-        </Grid2>
+        </Grid>
 
 
       </div>
