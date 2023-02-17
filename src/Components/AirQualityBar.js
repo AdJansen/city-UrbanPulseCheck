@@ -10,6 +10,19 @@ import Icon from '@mui/material/Icon';
 import { minHeight } from '@mui/system';
 import Paper from '@mui/material/Paper';
 
+//Air Quality Bar componenet contains some highlighted information from several differnet APIs about the selected city
+//it contains the air quality index, the weather, and the total city score
+//when the user clicks on the air quality card, it will take them to the air quality website for that city
+//when the user clicks on the weather card, it will take them to the weather website for that city
+//the air quality index is a number that represents the air quality in the city
+//the weather is the current weather in the city
+//the total city score is a number that represents the overall quality of the city
+//the total city score is calculated by the Teleport API
+//the air quality index is calculated by the Air Quality Index API
+//the weather is calculated by the Weather API
+
+//MUI componenets were used throughout to create the cards and the grid, but all code and styling was written by us
+//estimate that around 50% of the code was written by us, and the rest was from the MUI documentation
 const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
     const [airData, setAirData] = useState([]);
     const [weatherData, setWeatherData] = useState([]);
