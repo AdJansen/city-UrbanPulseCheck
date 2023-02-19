@@ -6,7 +6,7 @@ import '@testing-library/jest-dom'
 
 
 
-
+// The initial Test cases were generated with chatGPT, but then modified to fit the project, maybe 30% of the code is self written
 test('App component is being rendered without crashing', () => {
   const { getByTestId } = render(<App />);
   expect(getByTestId('app-component')).toBeInTheDocument();
@@ -43,7 +43,6 @@ test('CityCard component is being rendered and passed the correct props', async 
 });
 
 test('setSelectedUrbanArea functions correctly', () => {
-  const { getByTestId } = render(<App />);
   const setSelectedUrbanArea = jest.fn();
 
   act(() => {

@@ -23,7 +23,7 @@ const ExpandMore = styled((props) => { //ExapandMore was taken from MUI
 
 //Card component taken from material-ui with some modifications to work with our data
 //CityCard will probably need to intake data from the API, and then display it in the card
-const CityCard = ({ urbanDetail, urbanScore, testid}) => {
+const CityCard = ({ urbanDetail, urbanScore, testid}) => {  //urbanDetail and urbanScore are props that are passed in from the parent component. They hold the data for the card
     const [expanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
@@ -66,7 +66,7 @@ const CityCard = ({ urbanDetail, urbanScore, testid}) => {
                                         {data.percent_value ? `${(data.percent_value * 100).toFixed(2)}%` : null}</b>
                                 </div>
                             </div>) :
-                            (<div style={{ display: "flex", justifyContent: "space-between" }}>
+                            (<div style={{ display: "flex", justifyContent: "space-between" }}> 
                                 <div style={{ textAlign: "left" }}>{data.label} :</div>
                                 <div style={{ textAlign: "right" }}>
                                     <b>{data.string_value ? data.string_value : null}
