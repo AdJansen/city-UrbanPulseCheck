@@ -53,8 +53,8 @@ function App() {
         TestId="searchbar-component"
       /> 
       <div className='mainWindow'>
-      
-        <AirQualityBar selectedUrbanArea={selectedUrbanArea} urbanScore={urbanScores}/>
+        {/* the air quality bar is rendered here, it is passed the selectedUrbanArea and urbanScores states and display air quality, weather, and city score data  */}
+        <AirQualityBar selectedUrbanArea={selectedUrbanArea} urbanScore={urbanScores}/> 
 
         <div dangerouslySetInnerHTML={{ __html: urbanScores.summary }} /* Displays the City Summary, The InnerHTML is unfortunately required due to some emphasis tags coming from the API*/ />
 

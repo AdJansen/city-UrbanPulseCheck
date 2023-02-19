@@ -33,23 +33,27 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
 
     useEffect(() => {
         const fetchData = async () => {
+            //getting data from air quality index API
             const response = await fetch(`https://api.waqi.info/feed/${city}/?token=f419ebf4321774d187a782c59307d9b30ee056b7`);
             const data = await response.json();
             //console.log("Air Quality Data")
             //console.log(data)    
             setAirData(data);
 
+            //getting data from weather API
             const response2 = await fetch(`https://api.weatherapi.com/v1/current.json?key=02636dea6dac4e80bf3152610231302&q=${city}&aqi=no`);
             const data2 = await response2.json();
             setWeatherData(data2);
             //console.log("data2")
             //console.log(data2);
-
+            
+            //getting url data from weather API to create clickable widget to weather website
             const response3 = await fetch(`https://api.weatherapi.com/v1/search.json?key=02636dea6dac4e80bf3152610231302&q=${city}`);
             const data3 = await response3.json();
             //console.log("data3")
             //console.log(data3)
 
+            //checking if url data exists, defaulting to displaying Ottawa's weather if it doesn't
             let zone = data3 ? data3[0].url : "ottawa-ontario-canada";
             let id = data3 ? data3[0].id : "316187";
 
@@ -65,6 +69,7 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
         }
     }, [selectedUrbanArea, city]);
 
+    //function to change the color of the air quality index based on its value 
     function airColor(aqiIn) {
         let aqi = parseInt(aqiIn)
         console.log(`aqi: ${aqi}`)
@@ -85,6 +90,7 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
             return ["black", null]; //black
         }
     }
+    //function to changes the colour of the city score based on its value (not used)
     function scoreColor(score) {
         if (score < 50) {
             return "#FF0000"
@@ -96,16 +102,17 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
 
 
     let aqi = (airData.data && airData.status != "error") ? airData.data.aqi : wuhwuh
-    if (city) {
+    if (city) { //checking if city has been selected before displaying anything
         return (
             <div className="air-quality-bar">
 
                 <Grid className="air-bar" container sx={{ backgroundColor: 'white', alignItems: 'center', fontSize: '1.5rem', borderRadius: 3, display: "inline-flex", justifyContent: 'center' }} rowSpacing={0} columnSpacing={8} >
+                    {/* //displayign the city name and the total city score */}
                     <Grid item sm={12} md={4} className="city-name" sx={{ color: 'black', padding: 0 }}>
                         <h1> {selectedUrbanArea}</h1>
                         <h2> Total City Score: {Math.ceil(urbanScore.teleport_city_score)} / 100</h2>
                     </Grid>
-
+                    {/* //displaying the air quality card */}
                     <Grid item sm={12} md={4} sx={{ paddingTop: 0 }}>
                         <Card className="air-quality-card" sx={{}}>
 
@@ -137,7 +144,7 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
                         </Card>
                     </Grid>
 
-
+                    {/* //displaying the weather card */}
                     <Grid item sm={12} md={4} className="weather-grid" >
                         <Card className="weather-card" sx={{}}>
                             <CardActionArea href={weatherInfo}>
@@ -175,9 +182,6 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
                                             </Grid>
                                         </Grid>
                                     </Grid>
-
-
-
                                 </CardContent>
                             </CardActionArea>
                         </Card>
@@ -185,7 +189,7 @@ const AirQualityBar = ({ selectedUrbanArea, urbanScore }) => {
                 </Grid>
             </div>
         );
-    } else {
+    } else { //displaying prompt to select a city if none has been selected
         return <h1>Choose a city to learn more about it</h1>;
 
     }
