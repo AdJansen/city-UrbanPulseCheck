@@ -1,3 +1,12 @@
+# CityPulse
+> Learn more about living in or visiting your favourite cities!
+
+# Check it out!
+https://city-pulse-app.netlify.app/
+
+
+# Alternatively - Installing from source: 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
